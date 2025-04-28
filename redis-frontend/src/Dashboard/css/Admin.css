@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --light: #f6f6f9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bx {
+    font-size: 1.7rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body.dark {
+    --light: #181a1e;
+    --grey: #25252c;
+    --dark: #fbfbfb;
+}
+
+body {
+    background: var(--grey);
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--light);
+    width: 280px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar.close {
+    width: 0; /* Completely close the sidebar */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.sidebar .logo {
+    font-size: 24px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    z-index: 500;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+}
+
+.sidebar .logo .logo-name span {
+    color: var(--dark);
+}
+
+.sidebar .logo .bx {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+    height: auto; /* Adjusted for multi-line text */
+    background: transparent;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+    padding: 4px;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--dark);
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 10px 16px; /* Adjusted padding */
+}
+
+.sidebar.close .side-menu li a {
+    padding: 10px 0; /* Adjust padding for closed state */
+    justify-content: center; /* Center icons when closed */
+}
+
+.sidebar.close .side-menu li a span {
+    display: none; /* Hide text when sidebar is closed */
+}
+
+.sidebar.close .side-menu li a.active {
+    background: transparent !important; /* Remove green background when closed */
+    color: var(--dark) !important; /* Reset text color */
+}
+
+.sidebar.close .side-menu li a.active i {
+    color: var(--dark) !important; /* Reset icon color */
+}
+
+.sidebar .side-menu li a.active {
+    color: #ffffff !important;
+    background: #28a745 !important;
+    border-radius: 25px !important;
+    font-weight: bold;
+}
+
+.sidebar .side-menu li a.active i {
+    color: #ffffff !important;
+}
+
+.sidebar .side-menu li a:hover {
+    background: #a5d6a7;
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: 24px;
+    font-size: 1.6rem;
+    margin-right: 12px;
+}
+
+.sidebar .side-menu li a span {
+    flex-grow: 1;
+    white-space: normal; /* Allow text to wrap */
+}
+
+.sidebar .side-menu li a.logout {
+    color: var(--danger);
+}
+
+/* Content */
+.content {
+    position: relative;
+    width: calc(100% - 320px);
+    left: 280px;
+    transition: all 0.3s ease;
+}
+
+/* Main Content */
+.content main {
+    width: 100%;
+    padding: 36px 24px; /* Add padding to create space */
+    max-height: calc(100vh - 56px);
+    margin-left: 5px; /* Add margin to create space from the sidebar */
+}
+
+
+.sidebar.close~.content {
+    width:100% ;
+    left: 30px;
+}
+
+.sidebar.close~.content main {
+    margin-left: 0; /* Reset margin when sidebar is closed */
+}
+
+/* Navbar */
+.content nav {
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the right */
+    position: sticky;
+    top: 0;
+    left: 320px;
+    z-index: 1000;
+}
+
+/* Three-Line Menu Icon */
+.content nav .bx.bx-menu {
+    cursor: pointer;
+    color: var(--dark);
+    font-size: 24px; /* Adjust size as needed */
+    margin-right: 16px; /* Space between menu icon and profile image */
+}
+
+/* Profile Image */
+.content nav .profile img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 16px; /* Add space between toggle switch and profile image */
+}
+
+
+/* Theme Toggle Container */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-left: auto; /* Push toggle to the right */
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background: #ddd;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    transition: background 0.3s ease-in-out;
+}
+
+.theme-toggle::before {
+    content: "☀️"; /* Sun icon */
+    position: absolute;
+    left: 5px;
+    font-size: 14px;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.theme-toggle::after {
+    content: "🌙"; /* Moon icon */
+    position: absolute;
+    right: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#theme-toggle:checked + .theme-toggle {
+    background: #444;
+}
+
+#theme-toggle:checked + .theme-toggle::before {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+#theme-toggle:checked + .theme-toggle::after {
+    opacity: 1;
+    transform: translateX(-20px);
+}
+
+/* Dark Mode Styling */
+body.dark {
+    background-color: #222;
+    color: #fff;
+}
+
+body.dark .sidebar {
+    background: #1a1a1a;
+}
+
+body.dark .sidebar .side-menu li a {
+    color: #ddd;
+}
+
+body.dark .sidebar .side-menu li a.active {
+    color: #28a745;
+    background: rgba(40, 167, 69, 0.2);
+}
+
+body.dark .theme-toggle-container .bx-sun,
+body.dark .theme-toggle-container .bx-moon {
+    color: #fff;
+}
+/* Add a subtle background color to the form container */
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Style the cards */
+  .card {
+    border: none;
+    border-radius: 8px;
+  }
+  
+  /* Add some spacing between form groups */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Style the CSV upload button */
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  /* Notification Styles */
+.notification-dropdown {
+    position: relative;
+    margin-right: 15px;
+  }
+  
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.7rem;
+  }
+  
+  .dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 300px;
+  }
+  
+  .dropdown-item.unread {
+    background-color: #f8f9fa;
+    font-weight: 500;
+  }
+  
+  /* Document Requests Page */
+  .document-requests {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px;
+  }
+  
+  /* Dark Mode Adjustments */
+  .dark .document-requests {
+    background-color: #2c3034;
+    color: white;
+  }
+  
+  .dark .dropdown-menu {
+    background-color: #343a40;
+  }
+  
+  .dark .dropdown-item {
+    color: white;
+  }
+  
+  .dark .dropdown-item:hover {
+    background-color: #495057;
+  }
+  
+  .dark .dropdown-item.unread {
+    background-color: #495057;
+  }
+  
+  .dark .table-dark {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .dark .table-striped > tbody > tr:nth-of-type(odd) > * {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  /* Notification styles */
+.notification-dropdown .unread {
+    background-color: #f8f9fa;
+    font-weight: 500;
+  }
+  
+  .notification-dropdown .unread strong {
+    color: #0d6efd;
+  }
+  
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.7rem;
+  }
